@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>Document</title>
+    <script>
+            function handler(e) {
+                e = e || window.event;
+                var pageX = e.pageX;
+                var pageY = e.pageY;
+                if (pageX === undefined) {
+                    pageX = document.body.scrollLeft + document.documentElement.scrollLeft;
+                    pageY = document.body.scrolltop  + document.documentElement.scrollTop;
+                }
+                myDiv = document.createElement("div");
+                myDiv.setAttribute("class" ,"main-div");
+                myDiv.style.top = pageY + "px";
+                myDiv.style.left = pageX + "px";
+                myDiv.innerHTML = "hello there!";
+                var currentElem = (document.elementFromPoint(pageX, pageY).localName === "html") ? 
+                    document.getElementById("body") : document.elementFromPoint(pageX, pageY);
+                    currentElem.appendChild(myDiv);
+                }
+                function handler2(e) {
+                e = e || window.event;
+                
+                var pageX = e.pageX;
+                var pageY = e.pageY;
+                
+                if (pageX === undefined) {
+                  pageX = document.body.scrollLeft + document.documentElement.scrollLeft;
+                  pageY = document.body.scrollTop + document.documentElement.scrollTop;
+                }
+
+                var currentElem = document.elementFromPoint(pageX, pageY);
+                
+               var myDiv = document.getElementById("pos");
+                myDiv.innerHTML = `(${pageX}, ${pageY}) - ${currentElem.localName}`;
+                 }
+                document.addEventListener('click', handler);
+                document.addEventListener('mousemove',handler2);
+    </script>
+</head>
+<body id="body" style="" >
+<div id="pos"></div>
+    
+</body>
+</html>

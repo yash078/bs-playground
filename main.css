@@ -1,0 +1,7 @@
+.main-div {
+    width: "50%";
+    border: "dotted 1px red";
+    position: "absolute";
+    width: 60vw;
+    height: 50vh;
+}
